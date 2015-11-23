@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:17 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 16:29:10 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/23 17:06:28 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int	i;
-	int	z;
-	int	s2_size;
+	size_t		i;
+	size_t		z;
+	size_t		s2_size;
 
 	i = 0;
 	z = 0;
