@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 12:55:06 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/23 14:40:00 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,12 @@ void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
-
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
 
 #endif
