@@ -1,0 +1,7 @@
+srcs/main.c
+*~
+*.a
+*.o
+*.out
+*.gch
+*~
