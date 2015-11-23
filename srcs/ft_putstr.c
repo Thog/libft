@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:46:01 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 13:15:17 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/23 17:50:35 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 void	ft_putstr(char const *s)
 {
-	int	counter;
-
-	counter = 0;
-	while (s[counter])
-	{
-		ft_putchar(s[counter]);
-		counter++;
-	}
+	ft_putstr_fd(s, 1);
 }
