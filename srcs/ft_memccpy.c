@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 08:53:24 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 10:10:09 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/24 13:16:56 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if ((*result++ = *source) == limit)
+		if ((*result++ = *source++) == limit)
 			return (result);
 		i++;
 	}
