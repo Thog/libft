@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 12:46:54 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 16:21:00 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/24 17:00:52 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/24 17:00:54 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strnew(size_t size)
 {
-	char		*tmp1;
-	const char	*tmp2;
-	size_t		i;
-	size_t		dlen;
+	char	*result;
 
-	tmp1 = dst;
-	tmp2 = src;
-	i = size;
-	while (i-- && *tmp1)
-		tmp1++;
-	dlen = tmp1 - dst;
-	i = size - dlen;
-	if (!i)
-		return (dlen + ft_strlen(tmp2));
-	while (*tmp2)
+	result = (char *)malloc(size + 1);
+	if (result == NULL)
 	{
-		if (i != 1)
-		{
-			*tmp1++ = *tmp2;
-			i--;
-		}
-		tmp2++;
+		return (result);
 	}
-	*tmp1 = '\0';
-	return (dlen + (tmp2 - src));
+	ft_bzero(result, size + 1);
+	return (result);
 }

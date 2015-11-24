@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 12:46:54 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 16:21:00 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/24 17:51:02 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/24 17:52:56 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char		*tmp1;
-	const char	*tmp2;
-	size_t		i;
-	size_t		dlen;
+	char	*str;
+	size_t	i;
 
-	tmp1 = dst;
-	tmp2 = src;
-	i = size;
-	while (i-- && *tmp1)
-		tmp1++;
-	dlen = tmp1 - dst;
-	i = size - dlen;
-	if (!i)
-		return (dlen + ft_strlen(tmp2));
-	while (*tmp2)
+	i = 0;
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!str)
+		return (NULL);
+	while (s[i])
 	{
-		if (i != 1)
-		{
-			*tmp1++ = *tmp2;
-			i--;
-		}
-		tmp2++;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	*tmp1 = '\0';
-	return (dlen + (tmp2 - src));
+	str[i] = '\0';
+	return (str);
 }

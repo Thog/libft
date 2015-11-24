@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 12:46:54 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 16:21:00 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/24 17:16:40 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/24 17:19:18 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char		*tmp1;
-	const char	*tmp2;
-	size_t		i;
-	size_t		dlen;
+	unsigned int i;
 
-	tmp1 = dst;
-	tmp2 = src;
-	i = size;
-	while (i-- && *tmp1)
-		tmp1++;
-	dlen = tmp1 - dst;
-	i = size - dlen;
-	if (!i)
-		return (dlen + ft_strlen(tmp2));
-	while (*tmp2)
+	i = 0;
+	while (*s)
 	{
-		if (i != 1)
-		{
-			*tmp1++ = *tmp2;
-			i--;
-		}
-		tmp2++;
+		f(i++, s++);
 	}
-	*tmp1 = '\0';
-	return (dlen + (tmp2 - src));
 }
