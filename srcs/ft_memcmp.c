@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 09:30:03 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 10:12:50 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/24 11:28:04 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (n--)
 	{
 		if (*str1 != *str2)
-			return (str1 - str2);
+			return (*str1 - *str2);
 		str1++;
 		str2++;
 	}
