@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 08:53:46 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/25 08:55:28 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/25 09:30:21 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@ static int	is_whitespace(char c)
 char		*ft_strtrim(const char *s)
 {
 	char	*buf;
+	long	index;
 
 	while (is_whitespace(*s))
 		s++;
 	buf = ft_strchr(s, '\0') - 1;
 	while (is_whitespace(*buf))
 		buf--;
-	return (ft_strsub(s, 0, buf - s + 1));
+	index = buf - s + 1;
+	if (index < 0)
+		return (ft_strdup(""));
+	return (ft_strsub(s, 0, index));
 }

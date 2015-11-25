@@ -6,15 +6,12 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:44:50 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 12:44:52 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/25 09:33:59 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-#define INT_MIN -2147483648
-#define INT_MAX 2147483647
 
 static void		set(int *a, int *b, int a_val, int b_val)
 {
@@ -33,7 +30,7 @@ static void		ft_init(int *n, int *neg, int *exp, int *size)
 	set(exp, size, 1, 0);
 	*neg = *n < 0 ? 1 : 0;
 	*n *= *neg ? -1 : 1;
-	while (*n >= *exp && *n < INT_MAX)
+	while (*n >= *exp && *n < MAX)
 		set(exp, size, *exp * 10, *size + 1);
 	*exp = *n ? *exp / 10 : *exp;
 	*size += (*neg || !*n) ? 1 : 0;
@@ -45,23 +42,23 @@ char			*ft_itoa(int n)
 	int		size;
 	int		neg;
 	float	f;
-	char	*res;
+	char	*result;
 
 	ft_init(&n, &neg, &exp, &size);
-	if (!(res = (n == INT_MIN ? ft_strdup("-2147483648") :
+	if (!(result = (n == MIN ? ft_strdup("-2147483648") :
 					(char *)malloc(sizeof(char) * (size + 1))))
-			|| (res && n == INT_MIN)
-			|| !(res = n == INT_MAX ? ft_strdup("2147483647") : res)
-			|| (res && n == INT_MAX))
-		return (res);
-	res[size] = '\0';
+			|| (result && n == MIN)
+			|| !(result = n == MAX ? ft_strdup("2147483647") : result)
+			|| (result && n == MAX))
+		return (result);
+	result[size] = '\0';
 	if (neg)
-		*res++ = '-';
+		*result++ = '-';
 	while (exp >= 1)
 	{
 		f = (float)(n / exp);
-		set((int *)res, &n, ((int)f) + '0', n - ((int)f) * exp);
-		ft_setintchar(&res, &exp, res + 1, exp / 10);
+		set((int *)result, &n, ((int)f) + '0', n - ((int)f) * exp);
+		ft_setintchar(&result, &exp, result + 1, exp / 10);
 	}
-	return (res - size);
+	return (result - size);
 }

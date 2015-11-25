@@ -6,13 +6,14 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 14:40:00 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/25 09:34:11 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
+# define MIN -2147483648
+# define MAX 2147483647
 # include <string.h>
 
 void	ft_putchar(char c);

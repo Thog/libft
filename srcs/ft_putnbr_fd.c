@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:41:01 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 17:43:26 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/25 09:37:26 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putnbr_fd(int nb, int fd)
 	int	temp;
 	int size;
 
+	if (nb == MIN)
+		return (ft_putstr_fd("-2147483648", fd));
 	size = 1;
 	if (nb < 0)
 	{
