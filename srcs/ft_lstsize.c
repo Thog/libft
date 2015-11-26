@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 08:53:39 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 11:37:47 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/26 11:57:55 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/26 12:03:16 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+size_t		ft_lstsize(t_list *lst)
 {
-	char	*result;
+	size_t	result;
+	t_list	*tmp;
 
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (!result)
-		return (NULL);
-	result = ft_strncpy(result, (s + start), len);
-	result[len] = '\0';
+	result = 0;
+	tmp = lst;
+	if (lst != NULL)
+	{
+		result++;
+		while (tmp != NULL)
+		{
+			tmp = tmp->next;
+			result++;
+		}
+	}
 	return (result);
 }

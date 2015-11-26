@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 08:53:39 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 11:37:47 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/26 11:21:56 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/26 11:32:52 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	char	*result;
-
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (!result)
-		return (NULL);
-	result = ft_strncpy(result, (s + start), len);
-	result[len] = '\0';
-	return (result);
+	if (new != NULL && alst != NULL && *alst != NULL)
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

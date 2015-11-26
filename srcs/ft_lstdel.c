@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 08:53:39 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 11:37:47 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/26 11:07:00 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/26 11:34:02 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+void	ft_lstdel(t_list **alist, void (*del)(void *, size_t))
 {
-	char	*result;
+	t_list *next;
+	t_list *tmp;
 
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (!result)
-		return (NULL);
-	result = ft_strncpy(result, (s + start), len);
-	result[len] = '\0';
-	return (result);
+	next = (*alist)->next;
+	if (alist != NULL)
+	{
+		while (next != NULL)
+		{
+			tmp = next->next;
+			ft_lstdelone(&next, del);
+			next = tmp;
+		}
+		(*alist)->next = NULL;
+		ft_lstdelone(alist, del);
+	}
 }
