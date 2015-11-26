@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:17:46 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 17:36:30 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/26 17:40:33 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ int				array_resize(t_array *array, size_t size)
 
 int				array_push(t_array *array, void *elem)
 {
-	int		result;
-
-	result = 1;
 	if (array != NULL)
 	{
 		if (array->size < (array->index + 1) &&
