@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:44:50 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/25 15:22:54 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/26 10:17:05 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char			*ft_itoa(int n)
 	int		exp;
 	int		size;
 	int		sign;
-	float	i;
+	int		i;
 	char	*result;
 
 	ft_init(&n, &sign, &exp, &size);
