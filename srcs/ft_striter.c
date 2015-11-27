@@ -6,12 +6,14 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 17:06:57 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 17:10:14 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 15:54:06 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_striter(char *s, void (*f)(char *))
 {
+	if (!s || !f)
+		return ;
 	while (*s)
 	{
 		f(s++);

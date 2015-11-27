@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 09:30:08 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/27 13:57:03 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 15:40:50 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strtrimcmp(const char *s, int (*f)(int c))
 	char	*buf;
 	long	index;
 
+	if (!s)
+		return (NULL);
 	while (f(*s))
 		s++;
 	buf = ft_strchr(s, '\0') - 1;

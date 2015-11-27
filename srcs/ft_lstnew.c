@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 10:11:09 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 10:41:58 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 16:03:05 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 		memcpy(result->content, content, content_size);
 		result->content_size = content_size;
 	}
+	result->next = NULL;
 	return (result);
 }
