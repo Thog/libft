@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_strtrimch.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 11:07:00 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/27 11:25:43 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/27 13:55:25 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/27 13:55:55 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdel(t_list **alist, void (*del)(void *, size_t))
+char	*ft_strtrimch(const char *s, char c)
 {
-	t_list *next;
-	t_list *tmp;
+	char	*buf;
+	long	index;
 
-	next = (*alist)->next;
-	if (alist != NULL)
-	{
-		while (next != NULL)
-		{
-			tmp = next->next;
-			ft_lstdelone(&next, del);
-			next = tmp;
-		}
-		(*alist)->next = NULL;
-		ft_lstdelone(alist, del);
-	}
+	while (*s == c)
+		s++;
+	buf = ft_strchr(s, '\0') - 1;
+	while (*buf == c)
+		buf--;
+	index = buf - s + 1;
+	if (index < 0)
+		return (ft_strdup(""));
+	return (ft_strsub(s, 0, index));
 }

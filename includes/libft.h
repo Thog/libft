@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/27 10:18:10 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 14:02:48 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *));
 size_t				ft_lstsize(t_list *lst);
 int					ft_iswhitespace(int c);
 int					ft_isblank(int c);
+int					ft_islower(int c);
+int					ft_isupper(int c);
 char				*ft_strtrimch(const char *s, char c);
 char				*ft_strtrimcmp(const char *s, int (*f)(int c));
 #endif

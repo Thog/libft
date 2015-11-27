@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:46:33 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 16:30:44 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 13:47:01 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char	*ft_strdup(const char *s)
 	size_t		i;
 	char		*copy;
 
-	i = ft_strlen(s);
-	copy = malloc(sizeof(*copy) * (i + 1));
+	copy = ft_strnew(ft_strlen(s));
 	if (!copy)
 		return (NULL);
 	i = 0;
