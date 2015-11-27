@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 08:53:46 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/27 09:42:08 by tguillem         ###   ########.fr       */
+/*   Created: 2015/11/27 09:22:43 by tguillem          #+#    #+#             */
+/*   Updated: 2015/11/27 10:20:44 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strtrim(const char *s)
+int		ft_iswhitespace(int c)
 {
-	return (ft_strtrimcmp(s, &ft_iswhitespace));
+	if (c == '\n' || ft_isblank(c))
+		return (1);
+	return (0);
+}
+
+int		ft_isblank(int c)
+{
+	return (c == '\t' || c == ' ');
 }

@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 09:59:45 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/25 15:11:37 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 09:47:37 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,6 @@ static size_t	count_words(const char *str, char separator)
 	return (i);
 }
 
-static char		*trim(const char *s, char c)
-{
-	char	*buf;
-	long	index;
-
-	while (*s == c)
-		s++;
-	buf = ft_strchr(s, '\0') - 1;
-	while (*buf == c)
-		buf--;
-	index = buf - s + 1;
-	if (index < 0)
-		return (ft_strdup(""));
-	return (ft_strsub(s, 0, index));
-}
-
 char			**ft_strsplit(char const *s, char c)
 {
 	int			start;
@@ -75,7 +59,7 @@ char			**ft_strsplit(char const *s, char c)
 			start = tmp - s;
 	}
 	if (count_words(s, c) == 1)
-		result[i++] = ft_strdup(trim(s, c));
+		result[i++] = ft_strdup(ft_strtrimch(s, c));
 	result[i] = NULL;
 	return (result);
 }

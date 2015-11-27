@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 17:24:52 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 10:18:10 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,6 @@ typedef	struct		s_arrayelem
 	int				size;
 }					t_arrayelem;
 
-typedef struct		s_array
-{
-	t_arrayelem		**data;
-	size_t			type_size;
-	size_t			size;
-	size_t			index;
-	size_t			it_cursor;
-}					t_array;
-
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -101,18 +92,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *));
 
 size_t				ft_lstsize(t_list *lst);
-
-t_array				*array_new(size_t type_size);
-void				array_destroy(t_array **array);
-int					array_push(t_array *array, void *elem);
-int					array_remove(t_array *array, void *elem);
-int					array_removeat(t_array *array, size_t pos);
-int					array_contain(t_array *array, void *elem);
-int					array_resize(t_array *array, size_t size);
-void				*array_get(t_array *array, size_t index);
-void				array_resetcursor(t_array *array);
-void				array_clear(t_array *array);
-void				*array_next(t_array *array);
-void				*array_prev(t_array *array);
-
+int					ft_iswhitespace(int c);
+int					ft_isblank(int c);
+char				*ft_strtrimch(const char *s, char c);
+char				*ft_strtrimcmp(const char *s, int (*f)(int c));
 #endif
