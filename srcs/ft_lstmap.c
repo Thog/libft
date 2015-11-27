@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:03:38 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 12:24:02 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 08:11:11 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	while (cursor != NULL)
 	{
 		tmp = f(cursor);
+		tmp = ft_lstnew(tmp->content, tmp->content_size);
 		if (tmp == NULL)
 			break ;
 		prev->next = tmp;
