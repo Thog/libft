@@ -6,35 +6,28 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:17 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/23 17:06:28 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/27 16:17:23 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t		i;
-	size_t		z;
-	size_t		s2_size;
+	size_t	i;
+	char	*tmp;
 
 	i = 0;
-	z = 0;
-	s2_size = 0;
-	while (s2[s2_size])
-		s2_size++;
-	if (!s2_size)
-		return ((char *)s1);
-	while (s1[i] && i < n && s2_size < n - 1)
+	tmp = (char *)malloc(sizeof(char) * n);
+	tmp = ft_strncpy(tmp, s1, n);
+	if (!ft_strlen(s2))
+		return ((char*)s1);
+	while (tmp[i])
 	{
-		while (s2[z] == s1[i + z])
-		{
-			if (z == s2_size - 1)
-				return ((char *)(s1 + i));
-			z++;
-		}
-		z = 0;
+		if (!ft_strncmp(tmp + i, s2, ft_strlen(s2)))
+			return ((char*)(s1 + i));
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
