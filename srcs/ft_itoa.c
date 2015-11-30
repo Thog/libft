@@ -6,12 +6,11 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:44:50 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 10:17:05 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/11/30 08:32:30 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static void		set(int *a, int *b, int new_a, int new_b)
 {
@@ -46,7 +45,7 @@ char			*ft_itoa(int n)
 
 	ft_init(&n, &sign, &exp, &size);
 	if (!(result = (n == MIN ? ft_strdup("-2147483648") :
-					ft_strnew(size + 1)))
+					ft_strnew(size)))
 			|| (result && n == MIN)
 			|| !(result = n == MAX ? ft_strdup("2147483647") : result)
 			|| (result && n == MAX))
