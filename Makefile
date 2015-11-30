@@ -6,11 +6,11 @@
 #    By: tguillem <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 12:17:37 by tguillem          #+#    #+#              #
-#    Updated: 2015/11/27 14:03:58 by tguillem         ###   ########.fr        #
+#    Updated: 2015/11/30 07:46:20 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS	+=	-Wextra -Wall -Werror -I./includes
+CFLAGS = -Wextra -Wall -Werror -I./includes
 CC = gcc
 
 NAME = libft.a
