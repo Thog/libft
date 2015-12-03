@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 09:22:43 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/27 10:20:44 by tguillem         ###   ########.fr       */
+/*   Created: 2015/12/03 09:50:28 by tguillem          #+#    #+#             */
+/*   Updated: 2015/12/03 09:55:03 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_iswhitespace(int c)
-{
-	if (c == '\n' || ft_isblank(c))
-		return (1);
-	return (0);
-}
-
-int		ft_isblank(int c)
+int	ft_isblank(int c)
 {
 	return (c == '\t' || c == ' ');
 }
