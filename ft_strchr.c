@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 08:53:56 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/24 08:54:00 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/12/04 11:14:18 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (!s)
-		return (NULL);
 	while (*s != c)
 	{
 		if (!*s)
