@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 11:44:41 by tguillem          #+#    #+#             */
-/*   Updated: 2015/11/26 11:50:10 by tguillem         ###   ########.fr       */
+/*   Updated: 2015/12/08 10:46:31 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@ void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 	t_list	*tmp;
 
 	tmp = lst;
-	if (lst != NULL)
+	while (tmp)
 	{
-		while (tmp != NULL)
-		{
-			f(tmp);
-			tmp = tmp->next;
-		}
+		f(tmp);
+		tmp = tmp->next;
 	}
 }

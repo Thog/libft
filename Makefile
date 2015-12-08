@@ -6,7 +6,7 @@
 #    By: tguillem <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 12:17:37 by tguillem          #+#    #+#              #
-#    Updated: 2015/12/07 12:48:30 by tguillem         ###   ########.fr        #
+#    Updated: 2015/12/08 10:27:55 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,15 +23,15 @@ all: $(NAME)
 
 
 $(NAME):
-	$(CC) $(CFLAGS)  -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@$(CC) $(CFLAGS)  -c $(SRC)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -f $(OBJ) libft.h.gch
+	@/bin/rm -f $(OBJ) libft.h.gch
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 .PHONY: clean fclean
 
