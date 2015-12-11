@@ -6,7 +6,7 @@
 #    By: tguillem <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 12:17:37 by tguillem          #+#    #+#              #
-#    Updated: 2015/12/09 10:02:55 by tguillem         ###   ########.fr        #
+#    Updated: 2015/12/11 13:49:02 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,15 @@ SRC = ft_memset.c ft_bzero.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 	  ft_strtrimch.c ft_strtrimcmp.c ft_islower.c ft_isupper.c
 
 OBJ = $(SRC:.c=.o)
-REMOVE = $(OBJ) libft.h.gch
+REMOVE = $(OBJ)
 
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS)  -c $(SRC)
+%.o : %.c
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	@echo Building $<...
+
+$(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
