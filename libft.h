@@ -6,7 +6,7 @@
 /*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2016/01/29 13:44:34 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/02/16 10:53:06 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define MIN -2147483648
 # define MAX 2147483647
 # define ABS(x) ((x) < 0 ? (-(x)) : (x))
+# define BASE_16 "0123456789ABCDEF"
 # include <wchar.h>
 # include <string.h>
 # include <inttypes.h>
@@ -110,5 +111,6 @@ void				ft_putnbrbase(uintmax_t nbr, char *base);
 size_t				ft_wstrlen(wchar_t *str);
 void				ft_putwchar(wchar_t chr);
 void				ft_putwstr(wchar_t *strr);
+char				*ft_itoa_base(int value, int base);
 
 #endif
