@@ -6,7 +6,7 @@
 #    By: tguillem <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 12:17:37 by tguillem          #+#    #+#              #
-#    Updated: 2016/02/16 11:33:31 by tguillem         ###   ########.fr        #
+#    Updated: 2016/02/16 11:54:51 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ all: $(NAME)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
-	@echo Building $<...
+	@echo "libft> Building $<..."
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
