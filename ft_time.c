@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_time.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 09:07:39 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/10 09:08:33 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char				*get_next(char *str)
@@ -12,7 +24,7 @@ static char				*date_next(char **start_pos, char **end_pos)
 	char		*result;
 
 	*end_pos = get_next(*start_pos);
-	result = ft_strsub(*start_pos, 0, *end_pos - *start_pos); 
+	result = ft_strsub(*start_pos, 0, *end_pos - *start_pos);
 	*start_pos = *end_pos + 1;
 	while (*(*start_pos) && *(*start_pos) == ' ')
 		(*start_pos)++;
@@ -44,5 +56,3 @@ t_date					*ft_date(time_t *time)
 	result->year = date_next(&start_pos, &end_pos);
 	return (result);
 }
-
-
