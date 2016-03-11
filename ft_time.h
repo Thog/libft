@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 09:07:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 09:08:51 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 17:17:01 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct			s_date
 	char				*year;
 }						t_date;
 
-t_date					*ft_date(time_t *time);
+t_date					*ft_parse_date(time_t *time);
+void					ft_destroy_date(t_date *to_del);
 
 #endif
