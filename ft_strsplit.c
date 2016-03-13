@@ -15,52 +15,66 @@
 
 static size_t	count_words(const char *str, char separator)
 {
-	size_t	i;
-	size_t	index;
-	int		l;
+	size_t		result;
+	int		is_word;
 
-	i = 0;
-	index = 0;
-	l = 1;
-	while (str[index])
+	result = 0;
+	is_word = 0;
+	while (*str)
 	{
-		if (str[index] == separator)
-			l = 1;
-		else if (l)
+		if (is_word == 0 && *str != separator)
 		{
-			l = 0;
-			i++;
+			is_word = 1;
+			result++;
 		}
-		index++;
+		else if (is_word == 1 && *str == separator)
+			is_word = 0;
+		str++;
 	}
-	return (i);
+	return (result);
+}
+
+static size_t word_length(const char *str, char separator)
+{
+	int		length;
+
+	length = 0;
+	while (*str != separator && *str)
+	{
+		length++;
+		str++;
+	}
+	return (length);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	int			start;
-	int			l;
-	size_t		i;
-	char const	*tmp;
-	char		**result;
+	char	**result;
+	size_t	word_count;
+	size_t	i;
+	size_t	length;
 
-	l = 1;
-	i = 0;
-	tmp = s;
-	start = 0;
-	result = (char **)ft_memalloc(sizeof(char*) * (count_words(s, c) + 1));
-	if (result == NULL)
-		return (NULL);
-	while (*tmp && count_words(s, c) != 1)
+	if (s)
 	{
-		if (*tmp == c && !l && ((l = 1) + 1))
-			result[i++] = ft_strsub(s, start, (tmp - s) - start);
-		else if (*tmp != c && l && ((l = 0) + 1))
-			start = tmp - s;
-		tmp++;
+		i = 0;
+		length = 0;
+		word_count = count_words(s, c);
+		if ((result = (char **)ft_memalloc(sizeof(char*) * (word_count + 1))))
+		{
+			while (word_count--)
+			{
+				while (*s == c && *s)
+					s++;
+				length = word_length(s, c);
+				result[i] = ft_strsub(s, 0, length);
+				if (!result[i])
+					return (NULL);
+				s += length;
+				i++;
+			}
+			result[i] = NULL;
+			return (result);
+		}
 	}
-	if (count_words(s, c) == 1)
-		result[i++] = ft_strdup(ft_strtrimch(s, c));
-	result[i] = NULL;
-	return (result);
+	return (NULL);
 }
