@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 16:01:43 by tguillem          #+#    #+#             */
-/*   Updated: 2016/02/16 14:42:39 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:50:44 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ ssize_t	ft_printf_manage_wchar(char **format, va_list *args, t_data *data)
 	else if (chr <= 0x10FFFF)
 		len = 4;
 	if (data->got_width && !data->right_pad)
-		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ');
-	ft_putwchar(chr);
+		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ',
+				data->fd);
+	ft_putwchar_fd(chr, data->fd);
 	if (data->got_width && data->right_pad)
-		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ');
+		ft_printf_width_pad(len, data->width, data->zero_pad ? '0' : ' ',
+				data->fd);
 	return (data->got_width ? ft_max(len, data->width) : len);
 }
 
@@ -44,10 +46,11 @@ ssize_t	ft_printf_manage_char(char **format, va_list *args, t_data *data)
 	else
 	{
 		if (data->got_width && !data->right_pad)
-			ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ');
-		ft_putchar(va_arg(*args, int));
+			ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ',
+					data->fd);
+		ft_putchar_fd(va_arg(*args, int), data->fd);
 		if (data->got_width && data->right_pad)
-			ft_printf_width_pad(1, data->width, ' ');
+			ft_printf_width_pad(1, data->width, ' ', data->fd);
 		return (data->got_width ? ft_max(data->width, 1) : 1);
 	}
 }
@@ -68,10 +71,10 @@ ssize_t	ft_printf_manage_str(char **format, va_list *args, t_data *data)
 					data->accuracy)) : ft_strlen(str);
 		if (data->got_width && !data->right_pad)
 			ft_printf_width_pad(strlen, data->width, data->zero_pad ?
-					'0' : ' ');
-		write(1, str, strlen);
+					'0' : ' ', data->fd);
+		write(data->fd, str, strlen);
 		if (data->got_width && data->right_pad)
-			ft_printf_width_pad(strlen, data->width, ' ');
+			ft_printf_width_pad(strlen, data->width, ' ', data->fd);
 		return (data->got_width ? ft_max(strlen, data->width) : strlen);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 15:50:36 by tguillem          #+#    #+#             */
-/*   Updated: 2016/01/29 13:21:30 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:32:23 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ unsigned int		ft_printf_maxstrlen(uintmax_t nbr, char *base, char *p,
 	return (result);
 }
 
-void				ft_printf_width_pad(int nbrstrlen, int width, char padwith)
+void				ft_printf_width_pad(int nbrstrlen, int width,
+		char padwith, int fd)
 {
 	while (nbrstrlen < width)
 	{
-		ft_putchar(padwith);
+		ft_putchar_fd(padwith, fd);
 		nbrstrlen++;
 	}
 }
@@ -91,17 +92,16 @@ ssize_t				ft_printf_nbrforceprefix(uintmax_t nbr, char *base,
 	unsigned	len;
 	size_t		cut;
 
-	len = ft_printf_maxstrlen(nbr, base, NULL, data) +
-		ft_strlen(prefix);
+	len = ft_printf_maxstrlen(nbr, base, NULL, data) + ft_strlen(prefix);
 	cut = ft_strlen(prefix);
 	if (data->got_width && !data->right_pad && !data->zero_pad)
 	{
-		ft_printf_width_pad(len, data->width, ' ');
+		ft_printf_width_pad(len, data->width, ' ', data->fd);
 		cut += ft_max(data->width - len, 0);
 		data->got_width = 0;
 	}
 	else if (data->got_width)
 		data->width -= ft_strlen(prefix);
-	ft_putstr(prefix);
+	ft_putstr_fd(prefix, data->fd);
 	return (ft_printfu(nbr, data, base, NULL) + cut);
 }

@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 15:58:03 by tguillem          #+#    #+#             */
-/*   Updated: 2016/02/16 11:48:51 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:24:29 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		manage_args(char **format, va_list *args, t_data *data)
 	return (ret);
 }
 
-int		internal_printf(const char *format, va_list *args, int length)
+int		internal_printf(const char *format, va_list *args, int length, int fd)
 {
 	char	*next_arg;
 	t_data	prop_data;
@@ -44,15 +44,16 @@ int		internal_printf(const char *format, va_list *args, int length)
 	if (!*format)
 		return (length);
 	if (!next_arg)
-		return (length + write(1, format, ft_strlen(format)));
+		return (length + write(fd, format, ft_strlen(format)));
 	else if (next_arg > format)
-		return (internal_printf(next_arg, args, length + write(1, format,
-						next_arg - format)));
+		return (internal_printf(next_arg, args, length + write(fd, format,
+						next_arg - format), fd));
 	else
 	{
 		ft_bzero(&prop_data, sizeof(prop_data));
+		prop_data.fd = fd;
 		if ((len = manage_args((char**)&format, args, &prop_data)) == -1)
 			return (-1);
-		return (internal_printf(format, args, length + len));
+		return (internal_printf(format, args, length + len, fd));
 	}
 }

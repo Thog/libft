@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 14:56:50 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 15:27:14 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:55:00 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	ft_putnbrbase_inter(uintmax_t nbr, char *base, t_data *data,
 		unsigned int len)
 {
 	if (data->got_accuracy)
-		ft_printf_width_pad(len, data->accuracy, base[0]);
+		ft_printf_width_pad(len, data->accuracy, base[0], data->fd);
 	if (nbr != 0 || !data->got_accuracy || data->accuracy != 0)
-		ft_putnbrbase(nbr, base);
+		ft_putnbrbase_fd(nbr, base, data->fd);
 }
 
 ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
@@ -38,11 +38,11 @@ ssize_t		ft_printfu(uintmax_t nbr, t_data *data, char *base, char *prefix)
 	}
 	strlen = ft_printf_maxstrlen(nbr, base, prefix, data);
 	if (data->got_width && !data->right_pad)
-		ft_printf_width_pad(strlen, data->width, ' ');
+		ft_printf_width_pad(strlen, data->width, ' ', data->fd);
 	if (data->prefix && prefix && nbr)
-		ft_putstr(prefix);
+		ft_putstr_fd(prefix, data->fd);
 	ft_putnbrbase_inter(nbr, base, data, len);
 	if (data->got_width && data->right_pad)
-		ft_printf_width_pad(strlen, data->width, ' ');
+		ft_printf_width_pad(strlen, data->width, ' ', data->fd);
 	return (data->got_width ? (ft_max(strlen, data->width)) : strlen);
 }

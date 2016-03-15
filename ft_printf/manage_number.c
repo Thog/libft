@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 15:49:23 by tguillem          #+#    #+#             */
-/*   Updated: 2016/02/04 12:21:11 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:49:01 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ ssize_t				ft_printf_manage_octal(char **format, va_list *args,
 			data->got_accuracy && !data->accuracy)
 	{
 		if (data->got_width && !data->right_pad)
-			ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ');
-		ft_putstr("0");
+			ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ',
+					data->fd);
+		ft_putstr_fd("0", data->fd);
 		if (data->got_width && data->right_pad)
-			ft_printf_width_pad(1, data->width, ' ');
+			ft_printf_width_pad(1, data->width, ' ', data->fd);
 		return (data->got_width ? ft_max(data->width, 1) : 1);
 	}
 	else if (data->prefix && nbr)

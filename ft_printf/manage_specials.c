@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 12:22:36 by tguillem          #+#    #+#             */
-/*   Updated: 2016/02/16 14:43:53 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:49:46 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ ssize_t	ft_printf_manage_percent(char **format, va_list *args, t_data *data)
 	(void)format;
 	(void)args;
 	if (data->got_width && !data->right_pad)
-		ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ');
-	ft_putchar('%');
+		ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ',
+				data->fd);
+	ft_putchar_fd('%', data->fd);
 	if (data->got_width && data->right_pad)
-		ft_printf_width_pad(1, data->width, ' ');
+		ft_printf_width_pad(1, data->width, ' ', data->fd);
 	return (data->got_width ? ft_max(data->width, 1) : 1);
 }
 
@@ -39,9 +40,10 @@ ssize_t	ft_printf_manage_null(char **format, va_list *args, t_data *data)
 {
 	(void)args;
 	if (data->got_width && !data->right_pad)
-		ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ');
-	ft_putchar(**format);
+		ft_printf_width_pad(1, data->width, data->zero_pad ? '0' : ' ',
+				data->fd);
+	ft_putchar_fd(**format, data->fd);
 	if (data->got_width && data->right_pad)
-		ft_printf_width_pad(1, data->width, ' ');
+		ft_printf_width_pad(1, data->width, ' ', data->fd);
 	return (data->got_width ? ft_max(data->width, 1) : 1);
 }

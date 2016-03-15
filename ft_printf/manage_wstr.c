@@ -6,13 +6,13 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 15:59:17 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 12:22:58 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/15 17:51:07 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			ft_putnwstr(const wchar_t *str, size_t len)
+void			ft_putnwstr(const wchar_t *str, size_t len, int fd)
 {
 	size_t	i;
 
@@ -28,7 +28,7 @@ void			ft_putnwstr(const wchar_t *str, size_t len)
 		else if (*str <= 0x10FFFF)
 			i += 4;
 		if (i <= len)
-			ft_putwchar(*str++);
+			ft_putwchar_fd(*str++, fd);
 	}
 }
 
@@ -61,9 +61,10 @@ ssize_t			ft_printf_manage_wstr(char **format, va_list *args,
 	strlen = data->got_accuracy ? calc_wstrlen(str, data->accuracy, 0) :
 			ft_wstrlen(str);
 	if (data->got_width && !data->right_pad)
-		ft_printf_width_pad(strlen, data->width, data->zero_pad ? '0' : ' ');
-	ft_putnwstr(str, strlen);
+		ft_printf_width_pad(strlen, data->width, data->zero_pad ? '0' : ' ',
+				data->fd);
+	ft_putnwstr(str, strlen, data->fd);
 	if (data->got_width && data->right_pad)
-		ft_printf_width_pad(strlen, data->width, ' ');
+		ft_printf_width_pad(strlen, data->width, ' ', data->fd);
 	return (data->got_width ? ft_max(strlen, data->width) : strlen);
 }
