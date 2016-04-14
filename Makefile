@@ -6,11 +6,11 @@
 #    By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 12:17:37 by tguillem          #+#    #+#              #
-#    Updated: 2016/03/30 10:22:30 by tguillem         ###   ########.fr        #
+#    Updated: 2016/04/14 08:17:01 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -g -Wextra -Wall -Werror -I./
+CFLAGS = -g -Wextra -Wall -Werror -march=native -I./
 CC = gcc
 
 NAME = libft.a
