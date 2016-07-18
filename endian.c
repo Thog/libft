@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   endian.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 12:44:50 by tguillem          #+#    #+#             */
-/*   Updated: 2016/07/18 18:30:56 by tguillem         ###   ########.fr       */
+/*   Created: 2016/07/18 18:32:10 by tguillem          #+#    #+#             */
+/*   Updated: 2016/07/18 18:35:39 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_itoa(int n)
+int			is_le(void)
 {
-	return (ft_itoa_base(n, 10));
+	unsigned int		x;
+
+	x = 1;
+	return ((int)(((char *)&x)[0]));
 }
 
-char			*ft_itoa_prefix(char *prefix, int n)
+int			is_be(void)
 {
-	char		*number;
-	char		*result;
+	return (!is_le());
+}
 
-	number = ft_itoa(n);
-	if (number)
-	{
-		result = ft_strjoin(prefix, number);
-		ft_strdel(&number);
-		return (result);
-	}
-	return (NULL);
+short		swap_short(short lt)
+{
+	return ((lt << 8) | ((lt >> 8) & 0xFF));
+}
+
+int			swap_int(int lt)
+{
+	lt = ((lt << 8) & 0xFF00FF00) | ((lt >> 8) & 0xFF00FF);
+	return ((lt << 16) | ((lt >> 16) & 0xFFFF));
+}
+
+unsigned	swap_uint(unsigned int lt)
+{
+	lt = lt << 8 | lt >> 8;
+	return (lt << 16 | lt >> 16);
 }

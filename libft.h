@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2016/05/25 11:26:58 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/07/18 18:49:18 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,11 @@ t_array				*to_array(char **src);
 char				**to_char_array(t_array *src);
 void				destroy_array(t_array *array);
 char				*ft_trim(char *src, char excluded);
+int					is_le();
+int					is_be();
+short				swap_short(short lt);
+int					swap_int(int lt);
+unsigned			swap_uint(unsigned int lt);
+char				*ft_itoa_prefix(char *prefix, int n);
 
 #endif
