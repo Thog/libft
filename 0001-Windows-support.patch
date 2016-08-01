@@ -53,8 +53,8 @@ index 5537c80..e2d59f5 100644
  }
 diff --git a/base/ft_putwchar_fd.c b/base/ft_putwchar_fd.c
 index 74655fc..bc3a18f 100644
---- a/ft_putwchar_fd.c
-+++ b/ft_putwchar_fd.c
+--- a/base/ft_putwchar_fd.c
++++ b/base/ft_putwchar_fd.c
 @@ -21,17 +21,4 @@ void		ft_putwchar_fd(wchar_t chr, int fd)
  		ft_putchar_fd((chr >> 6) + 0xC0, fd);
  		ft_putchar_fd((chr & 0x3F) + 0x80, fd);
@@ -75,8 +75,8 @@ index 74655fc..bc3a18f 100644
  }
 diff --git a/base/ft_wstrlen.c b/base/ft_wstrlen.c
 index a71bdd2..c02fa76 100644
---- a/ft_wstrlen.c
-+++ b/ft_wstrlen.c
+--- a/base/ft_wstrlen.c
++++ b/base/ft_wstrlen.c
 @@ -23,10 +23,6 @@ size_t	ft_wstrlen(wchar_t *str)
  			i++;
  		else if (*str <= 0x7FF)
