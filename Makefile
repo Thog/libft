@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -g -Wextra -Wall -Werror -march=native -I./
+CFLAGS = -g -Wextra -Wall -Werror -march=native -I./ -lmt
 CC = gcc
 
 NAME = libft.a
@@ -39,8 +39,11 @@ PRINTF = ft_nbrlen.c ft_printf.c ft_printu.c internal_printf.c manage_number.c \
 LIST = ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 	   ft_lstsize.c ft_lstmap.c ft_lstget.c
 
+MATHS = vector3d_lib.c vector3d_operator.c
+
 SRCS = $(addprefix base/, $(BASE)) $(addprefix string/, $(STRING)) \
-	   $(addprefix list/, $(LIST)) $(addprefix ft_printf/, $(PRINTF))
+	   $(addprefix list/, $(LIST)) $(addprefix ft_printf/, $(PRINTF)) \
+	   $(addprefix maths/, $(MATHS))
 
 OBJ = $(SRCS:.c=.o)
 REMOVE = $(OBJ)
