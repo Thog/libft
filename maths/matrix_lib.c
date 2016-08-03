@@ -3,17 +3,18 @@
 t_matrix		*alloc_matrix(size_t row_length, size_t colum_length)
 {
 	t_matrix	*res;
+	size_t		i;
 
 	if ((res = ft_memalloc(sizeof(t_matrix))))
 	{
 		res->row_length = row_length;
 		res->colum_length = colum_length;
-		res->mem = ft_memalloc(sizeof(double*) * row_length);
-		while (colum_length)
+		res->mem = ft_memalloc(sizeof(double*) * colum_length);
+		i = 0;
+		while (i < colum_length)
 		{
-			colum_length--;
-			*(res->mem + colum_length) = ft_memalloc(sizeof(double) *
-				res->colum_length);
+			*(res->mem + i) = ft_memalloc(sizeof(double) * (row_length + 1));
+			i++;
 		}
 	}
 	return (res);

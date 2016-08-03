@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include "ft_string.h"
 # include "maths/ft_vector.h"
+# include "maths/ft_matrix.h"
 # include "ft_time.h"
 # include "ft_printf/ft_printf.h"
 

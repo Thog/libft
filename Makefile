@@ -39,7 +39,7 @@ PRINTF = ft_nbrlen.c ft_printf.c ft_printu.c internal_printf.c manage_number.c \
 LIST = ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 	   ft_lstsize.c ft_lstmap.c ft_lstget.c
 
-MATHS = vector3d_lib.c vector3d_operator.c matrix_lib.c
+MATHS = vector3d_lib.c vector3d_operator.c matrix_lib.c matrix_operations.c
 
 SRCS = $(addprefix base/, $(BASE)) $(addprefix string/, $(STRING)) \
 	   $(addprefix list/, $(LIST)) $(addprefix ft_printf/, $(PRINTF)) \
