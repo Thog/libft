@@ -5,6 +5,11 @@ t_vec3d			*alloc_vec3d(void)
 	return (ft_memalloc(sizeof(t_vec3d)));
 }
 
+void			del_vec3d(t_vec3d *vector)
+{
+	ft_memdel((void**) &vector);
+}
+
 t_vec3d			*new_vec3d(double x, double y, double z)
 {
 	t_vec3d	*res;

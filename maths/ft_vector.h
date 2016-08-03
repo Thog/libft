@@ -15,6 +15,7 @@ typedef struct			s_vec3d
 t_vec3d			*alloc_vec3d(void);
 t_vec3d			*new_vec3d(double x, double y, double z);
 t_vec3d			*dup_vec3d(t_vec3d *src);
+void			del_vec3d(t_vec3d *vector);
 
 t_vec3d			*add_vec3d(t_vec3d *a, t_vec3d *b);
 t_vec3d			*substract_vec3d(t_vec3d *a, t_vec3d *b);
