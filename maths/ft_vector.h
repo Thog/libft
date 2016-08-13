@@ -1,6 +1,6 @@
 #ifndef FT_VECTOR_H
 #define FT_VECTOR_H
-# include <math.h>
+# include "ft_maths.h"
 # include "ft_string.h"
 # define ABS(x) ((x) < 0 ? (-(x)) : (x))
 
